@@ -99,6 +99,7 @@
             End Using
         End If
 
+        FileCheckProgress.Value = 100
         PlayButton.Enabled = True
     End Sub
 
