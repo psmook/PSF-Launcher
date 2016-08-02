@@ -26,22 +26,21 @@ Partial Class Launcher
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Launcher))
         Me.PNLabel = New System.Windows.Forms.Label
         Me.PatchNotes = New System.Windows.Forms.TextBox
-        Me.FileCheckProgress = New System.Windows.Forms.ProgressBar
+        Me.IndividualFileProgress = New System.Windows.Forms.ProgressBar
         Me.PlayButton = New System.Windows.Forms.Button
         Me.RefreshServerButton = New System.Windows.Forms.Button
         Me.ChangeServerButton = New System.Windows.Forms.Button
         Me.UpdateClientButton = New System.Windows.Forms.Button
         Me.AccountButton = New System.Windows.Forms.Button
         Me.PSForeverLauncherNotification = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.CVLabel = New System.Windows.Forms.Label
-        Me.SVLabel = New System.Windows.Forms.Label
         Me.CSLabel = New System.Windows.Forms.Label
         Me.ConnectedServerLabel = New System.Windows.Forms.Label
-        Me.ClientVersionLabel = New System.Windows.Forms.Label
-        Me.ServerVersionLabel = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.InfoPanel = New System.Windows.Forms.Panel
         Me.Logo = New System.Windows.Forms.PictureBox
-        Me.Panel1.SuspendLayout()
+        Me.TotalFileProgress = New System.Windows.Forms.ProgressBar
+        Me.ServerLocationLabel = New System.Windows.Forms.Label
+        Me.FileDownloadLabel = New System.Windows.Forms.Label
+        Me.InfoPanel.SuspendLayout()
         CType(Me.Logo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,12 +65,12 @@ Partial Class Launcher
         Me.PatchNotes.Size = New System.Drawing.Size(320, 404)
         Me.PatchNotes.TabIndex = 1
         '
-        'FileCheckProgress
+        'IndividualFileProgress
         '
-        Me.FileCheckProgress.Location = New System.Drawing.Point(340, 206)
-        Me.FileCheckProgress.Name = "FileCheckProgress"
-        Me.FileCheckProgress.Size = New System.Drawing.Size(275, 25)
-        Me.FileCheckProgress.TabIndex = 2
+        Me.IndividualFileProgress.Location = New System.Drawing.Point(340, 211)
+        Me.IndividualFileProgress.Name = "IndividualFileProgress"
+        Me.IndividualFileProgress.Size = New System.Drawing.Size(275, 20)
+        Me.IndividualFileProgress.TabIndex = 2
         '
         'PlayButton
         '
@@ -129,25 +128,6 @@ Partial Class Launcher
         '
         Me.PSForeverLauncherNotification.Visible = True
         '
-        'CVLabel
-        '
-        Me.CVLabel.AutoSize = True
-        Me.CVLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CVLabel.Location = New System.Drawing.Point(3, 23)
-        Me.CVLabel.Name = "CVLabel"
-        Me.CVLabel.Size = New System.Drawing.Size(74, 13)
-        Me.CVLabel.TabIndex = 10
-        Me.CVLabel.Text = "Client Version:"
-        '
-        'SVLabel
-        '
-        Me.SVLabel.AutoSize = True
-        Me.SVLabel.Location = New System.Drawing.Point(137, 23)
-        Me.SVLabel.Name = "SVLabel"
-        Me.SVLabel.Size = New System.Drawing.Size(79, 13)
-        Me.SVLabel.TabIndex = 11
-        Me.SVLabel.Text = "Server Version:"
-        '
         'CSLabel
         '
         Me.CSLabel.AutoSize = True
@@ -161,45 +141,22 @@ Partial Class Launcher
         '
         Me.ConnectedServerLabel.AutoSize = True
         Me.ConnectedServerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ConnectedServerLabel.Location = New System.Drawing.Point(117, 4)
+        Me.ConnectedServerLabel.Location = New System.Drawing.Point(107, 5)
         Me.ConnectedServerLabel.Name = "ConnectedServerLabel"
         Me.ConnectedServerLabel.Size = New System.Drawing.Size(37, 13)
         Me.ConnectedServerLabel.TabIndex = 13
         Me.ConnectedServerLabel.Text = "None"
         '
-        'ClientVersionLabel
+        'InfoPanel
         '
-        Me.ClientVersionLabel.AutoSize = True
-        Me.ClientVersionLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ClientVersionLabel.Location = New System.Drawing.Point(83, 23)
-        Me.ClientVersionLabel.Name = "ClientVersionLabel"
-        Me.ClientVersionLabel.Size = New System.Drawing.Size(47, 13)
-        Me.ClientVersionLabel.TabIndex = 14
-        Me.ClientVersionLabel.Text = "1.0.0.0"
-        '
-        'ServerVersionLabel
-        '
-        Me.ServerVersionLabel.AutoSize = True
-        Me.ServerVersionLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ServerVersionLabel.Location = New System.Drawing.Point(222, 23)
-        Me.ServerVersionLabel.Name = "ServerVersionLabel"
-        Me.ServerVersionLabel.Size = New System.Drawing.Size(47, 13)
-        Me.ServerVersionLabel.TabIndex = 15
-        Me.ServerVersionLabel.Text = "1.0.0.0"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Info
-        Me.Panel1.Controls.Add(Me.CSLabel)
-        Me.Panel1.Controls.Add(Me.ServerVersionLabel)
-        Me.Panel1.Controls.Add(Me.ConnectedServerLabel)
-        Me.Panel1.Controls.Add(Me.SVLabel)
-        Me.Panel1.Controls.Add(Me.ClientVersionLabel)
-        Me.Panel1.Controls.Add(Me.CVLabel)
-        Me.Panel1.Location = New System.Drawing.Point(340, 160)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(275, 40)
-        Me.Panel1.TabIndex = 16
+        Me.InfoPanel.BackColor = System.Drawing.SystemColors.Info
+        Me.InfoPanel.Controls.Add(Me.ServerLocationLabel)
+        Me.InfoPanel.Controls.Add(Me.CSLabel)
+        Me.InfoPanel.Controls.Add(Me.ConnectedServerLabel)
+        Me.InfoPanel.Location = New System.Drawing.Point(340, 157)
+        Me.InfoPanel.Name = "InfoPanel"
+        Me.InfoPanel.Size = New System.Drawing.Size(275, 23)
+        Me.InfoPanel.TabIndex = 16
         '
         'Logo
         '
@@ -211,19 +168,47 @@ Partial Class Launcher
         Me.Logo.TabIndex = 17
         Me.Logo.TabStop = False
         '
+        'TotalFileProgress
+        '
+        Me.TotalFileProgress.Location = New System.Drawing.Point(340, 185)
+        Me.TotalFileProgress.Name = "TotalFileProgress"
+        Me.TotalFileProgress.Size = New System.Drawing.Size(275, 20)
+        Me.TotalFileProgress.TabIndex = 18
+        '
+        'ServerLocationLabel
+        '
+        Me.ServerLocationLabel.AutoSize = True
+        Me.ServerLocationLabel.Location = New System.Drawing.Point(267, 5)
+        Me.ServerLocationLabel.Name = "ServerLocationLabel"
+        Me.ServerLocationLabel.Size = New System.Drawing.Size(0, 13)
+        Me.ServerLocationLabel.TabIndex = 14
+        Me.ServerLocationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'FileDownloadLabel
+        '
+        Me.FileDownloadLabel.AutoSize = True
+        Me.FileDownloadLabel.BackColor = System.Drawing.Color.Transparent
+        Me.FileDownloadLabel.Location = New System.Drawing.Point(478, 215)
+        Me.FileDownloadLabel.Name = "FileDownloadLabel"
+        Me.FileDownloadLabel.Size = New System.Drawing.Size(0, 13)
+        Me.FileDownloadLabel.TabIndex = 19
+        Me.FileDownloadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Launcher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(624, 442)
+        Me.Controls.Add(Me.FileDownloadLabel)
+        Me.Controls.Add(Me.TotalFileProgress)
         Me.Controls.Add(Me.Logo)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.InfoPanel)
         Me.Controls.Add(Me.AccountButton)
         Me.Controls.Add(Me.UpdateClientButton)
         Me.Controls.Add(Me.ChangeServerButton)
         Me.Controls.Add(Me.RefreshServerButton)
         Me.Controls.Add(Me.PlayButton)
-        Me.Controls.Add(Me.FileCheckProgress)
+        Me.Controls.Add(Me.IndividualFileProgress)
         Me.Controls.Add(Me.PatchNotes)
         Me.Controls.Add(Me.PNLabel)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
@@ -233,8 +218,8 @@ Partial Class Launcher
         Me.Name = "Launcher"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Welcome to PSForever!"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.InfoPanel.ResumeLayout(False)
+        Me.InfoPanel.PerformLayout()
         CType(Me.Logo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -242,20 +227,19 @@ Partial Class Launcher
     End Sub
     Friend WithEvents PNLabel As System.Windows.Forms.Label
     Friend WithEvents PatchNotes As System.Windows.Forms.TextBox
-    Friend WithEvents FileCheckProgress As System.Windows.Forms.ProgressBar
+    Friend WithEvents IndividualFileProgress As System.Windows.Forms.ProgressBar
     Friend WithEvents PlayButton As System.Windows.Forms.Button
     Friend WithEvents RefreshServerButton As System.Windows.Forms.Button
     Friend WithEvents ChangeServerButton As System.Windows.Forms.Button
     Friend WithEvents UpdateClientButton As System.Windows.Forms.Button
     Friend WithEvents AccountButton As System.Windows.Forms.Button
     Friend WithEvents PSForeverLauncherNotification As System.Windows.Forms.NotifyIcon
-    Friend WithEvents CVLabel As System.Windows.Forms.Label
-    Friend WithEvents SVLabel As System.Windows.Forms.Label
     Friend WithEvents CSLabel As System.Windows.Forms.Label
     Friend WithEvents ConnectedServerLabel As System.Windows.Forms.Label
-    Friend WithEvents ClientVersionLabel As System.Windows.Forms.Label
-    Friend WithEvents ServerVersionLabel As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents InfoPanel As System.Windows.Forms.Panel
     Friend WithEvents Logo As System.Windows.Forms.PictureBox
+    Friend WithEvents ServerLocationLabel As System.Windows.Forms.Label
+    Friend WithEvents TotalFileProgress As System.Windows.Forms.ProgressBar
+    Friend WithEvents FileDownloadLabel As System.Windows.Forms.Label
 
 End Class

@@ -40,10 +40,13 @@
 
         For Each network In Manifest.Descendants("network")
             Dim ServerName As String
+            Dim ServerLocation As String
 
             ServerName = network.Attribute("name").Value
+            ServerLocation = network.Attribute("location").Value
 
             ConnectedServerLabel.Text = ServerName
+            ServerLocationLabel.Text = ServerLocation
 
             My.Settings.AccountURL = network.Attribute("url").Value
         Next
@@ -106,7 +109,8 @@
             End Using
         End If
 
-        FileCheckProgress.Value = 100
+
+        TotalFileProgress.Value = 100
         PlayButton.Enabled = True
     End Sub
 
