@@ -15,7 +15,14 @@
         Dim manifest As XDocument
 
         request = System.Net.HttpWebRequest.Create(url)
+
+        request.ContentType = "text/xml"
+        request.ReadWriteTimeout = 5000
+        request.Timeout = 5000
+
         response = request.GetResponse()
+
+        response.Close()
 
         If response.StatusCode = 200 Then
             ' Download the manifest from the URL

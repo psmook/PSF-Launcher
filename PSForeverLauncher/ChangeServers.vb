@@ -4,7 +4,14 @@
         Dim response As System.Net.HttpWebResponse
 
         request = System.Net.HttpWebRequest.Create(ManifestFile.Text.ToString)
+
+        request.ContentType = "text/xml"
+        request.ReadWriteTimeout = 5000
+        request.Timeout = 5000
+
         response = request.GetResponse()
+
+        response.Close()
 
         If response.StatusCode = 200 Then
             My.Settings.Manifest = ManifestFile.Text
