@@ -38,7 +38,6 @@ Partial Class Launcher
         Me.InfoPanel = New System.Windows.Forms.Panel
         Me.Logo = New System.Windows.Forms.PictureBox
         Me.TotalFileProgress = New System.Windows.Forms.ProgressBar
-        Me.ServerLocationLabel = New System.Windows.Forms.Label
         Me.FileDownloadLabel = New System.Windows.Forms.Label
         Me.InfoPanel.SuspendLayout()
         CType(Me.Logo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,7 +140,7 @@ Partial Class Launcher
         '
         Me.ConnectedServerLabel.AutoSize = True
         Me.ConnectedServerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ConnectedServerLabel.Location = New System.Drawing.Point(107, 5)
+        Me.ConnectedServerLabel.Location = New System.Drawing.Point(107, 4)
         Me.ConnectedServerLabel.Name = "ConnectedServerLabel"
         Me.ConnectedServerLabel.Size = New System.Drawing.Size(37, 13)
         Me.ConnectedServerLabel.TabIndex = 13
@@ -150,7 +149,6 @@ Partial Class Launcher
         'InfoPanel
         '
         Me.InfoPanel.BackColor = System.Drawing.SystemColors.Info
-        Me.InfoPanel.Controls.Add(Me.ServerLocationLabel)
         Me.InfoPanel.Controls.Add(Me.CSLabel)
         Me.InfoPanel.Controls.Add(Me.ConnectedServerLabel)
         Me.InfoPanel.Location = New System.Drawing.Point(340, 157)
@@ -174,15 +172,6 @@ Partial Class Launcher
         Me.TotalFileProgress.Name = "TotalFileProgress"
         Me.TotalFileProgress.Size = New System.Drawing.Size(275, 20)
         Me.TotalFileProgress.TabIndex = 18
-        '
-        'ServerLocationLabel
-        '
-        Me.ServerLocationLabel.AutoSize = True
-        Me.ServerLocationLabel.Location = New System.Drawing.Point(267, 5)
-        Me.ServerLocationLabel.Name = "ServerLocationLabel"
-        Me.ServerLocationLabel.Size = New System.Drawing.Size(0, 13)
-        Me.ServerLocationLabel.TabIndex = 14
-        Me.ServerLocationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FileDownloadLabel
         '
@@ -238,7 +227,6 @@ Partial Class Launcher
     Friend WithEvents ConnectedServerLabel As System.Windows.Forms.Label
     Friend WithEvents InfoPanel As System.Windows.Forms.Panel
     Friend WithEvents Logo As System.Windows.Forms.PictureBox
-    Friend WithEvents ServerLocationLabel As System.Windows.Forms.Label
     Friend WithEvents TotalFileProgress As System.Windows.Forms.ProgressBar
     Friend WithEvents FileDownloadLabel As System.Windows.Forms.Label
 

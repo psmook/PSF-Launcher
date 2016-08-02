@@ -45,8 +45,7 @@
             ServerName = network.Attribute("name").Value
             ServerLocation = network.Attribute("location").Value
 
-            ConnectedServerLabel.Text = ServerName
-            ServerLocationLabel.Text = ServerLocation
+            ConnectedServerLabel.Text = ServerName & " - " & ServerLocation
 
             My.Settings.AccountURL = network.Attribute("url").Value
         Next
@@ -160,5 +159,9 @@
 
     Private Sub AccountButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountButton.Click
         Process.Start(My.Settings.AccountURL)
+    End Sub
+
+    Private Sub Logo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Logo.Click
+        MessageBox.Show(System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String("Q3JlYXRlZCBieSBtb29rIChwc21vb2sp")))
     End Sub
 End Class
